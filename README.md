@@ -84,6 +84,10 @@ Zet de taal op Nederlands:
 
 	#echo LANG=nl_NL.UTF-8>/etc/locale.conf
 
+Configureer de machine om DHCP te gebruiken om het netwerk in te stellen:
+
+	#systemctl enable dhcpcd
+
 Wijzig `/etc/mkinitcpio.conf` zodat `encrypt` voor `filesystems` in de `HOOKS` regel komt.
 Maak nu het initiele ramdisk aan:
 
