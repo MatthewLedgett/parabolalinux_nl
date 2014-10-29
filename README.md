@@ -8,6 +8,7 @@ Boot van CD.
 Kies de bovenste "Boot Parabola GNU/Linux-libre"
 
 Na ongeveer een minuut zie je: 
+
 	root@parabolaiso ~ # 
 
 
