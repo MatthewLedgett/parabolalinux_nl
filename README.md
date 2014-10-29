@@ -103,8 +103,9 @@ En maak de configuratie aan:
 
 	#grub-mkconfig -o /boot/grub/grub.cfg
 
-Ontkoppel je twee mounts:
+Verlaat de chroot en ontkoppel je twee mounts:
 
+	#exit
 	#umount /mnt/boot
 	#umount /mnt
 
