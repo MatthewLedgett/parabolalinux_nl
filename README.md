@@ -20,12 +20,29 @@ uit. Om te zien hoe de harddisk wordt genoemd door het systeem; bijvoorbeeld `/d
 	#free -m 
 
 uit om te zien hoeveel megabyte RAM je hebt.
-Wij gaan er voor de handleidin vanuit dat de harddisk `/dev/sda` is. Je voert
+Wij gaan er voor de handleidin vanuit dat de harddisk `/dev/sda` is. Je voert uit:
 
 	#fdisk /dev/sda
 
 Maak drie primaire partities:
 
 1. 2Gb partitie
-2. partitie net zo groot als het RAM; voor de swap
+2. swap partitie net zo groot als het RAM; vergeet niet het type op 0x82 te zetten.
 3. partitie met de rest van de disk
+
+Formatteer de eerste partitie met ext4; dit wordt de `/boot` partitie.
+
+	#mkfs.ext4 /dev/sda1
+
+Maak een gemapte LUKS partitie:
+
+	#cryptsetup -v -y luksFormat /dev/sda3
+
+Voor de duidelijkheid gebruiken wij de wachtwoordzin: `gnu`.
+
+Ontsluit het LUKS volume als `cryptroot`:
+
+	#cryptsetup open /dev/sda3 cryptroot
+
+
+Nu is ze zichtbaar als `/dev/mapper/cryptroot`.
