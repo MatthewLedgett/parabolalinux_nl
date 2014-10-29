@@ -25,6 +25,7 @@ Wij gaan er voor de handleidin vanuit dat de harddisk `/dev/sda` is. Je voert
 	#fdisk /dev/sda
 
 Maak drie primaire partities:
+
 1. 2Gb partitie
 2. partitie net zo groot als het RAM; voor de swap
 3. partitie met de rest van de disk
