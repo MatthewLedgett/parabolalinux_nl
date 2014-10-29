@@ -84,4 +84,30 @@ Zet de taal op Nederlands:
 
 	#echo LANG=nl_NL.UTF-8>/etc/locale.conf
 
-Wijzig `/etc/mkinitcpio.conf` zodat `encrypt` voor `filesystem` in de `HOOKS` regel komt.
+Wijzig `/etc/mkinitcpio.conf` zodat `encrypt` voor `filesystems` in de `HOOKS` regel komt.
+Maak nu het initiele ramdisk aan:
+
+	#mkinitcpio -p linux-libre
+
+Zet het rootwachtwoord op `root`:
+
+	#passwd
+
+Wijzig `/etc/default/grub` zodat de regel met `GRUB_CMDLINE_LINUX` `cryptdevice=/dev/sda3:cryptroot` bevat.  
+
+Installeer GRUB in het MBR:
+
+	#grub-install /dev/sda
+
+En maak de configuratie aan:
+
+	#grub-mkconfig -o /boot/grub/grub.cfg
+
+Ontkoppel je twee mounts:
+
+	#umount /mnt/boot
+	#umount /mnt
+
+Nu kun je rebooten naar je versleutelde minimale Parabola Linux systeem:
+
+	#reboot
