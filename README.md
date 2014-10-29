@@ -11,4 +11,12 @@ Na ongeveer een minuut zie je:
 
 	root@parabolaiso ~ # 
 
+Voer 
 
+	#fdisk -l
+
+uit. Om te zien hoe de harddisk wordt genoemd door het systeem; bijvoorbeeld `/dev/sda` of '/dev/sdb`. Voer 
+
+	#free -m 
+
+uit om te zien hoeveel megabyte RAM je hebt.
