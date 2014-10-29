@@ -15,7 +15,7 @@ Voer
 
 	#fdisk -l
 
-uit. Om te zien hoe de harddisk wordt genoemd door het systeem; bijvoorbeeld `/dev/sda` of `/dev/sdb`. Voer 
+uit om te zien hoe de harddisk wordt genoemd door het systeem; bijvoorbeeld `/dev/sda` of `/dev/sdb`. Voer 
 
 	#free -m 
 
@@ -62,5 +62,26 @@ Nu is het tijd om `pacstrap` te draaien om een basissysteem te installeren:
 
 	#pacstrap /mnt base grub vim
 
+We schrijven een filesystem tabel met:
 
+	#genfstab -p /mnt >> /mnt/etc/fstab
 
+We gaan het nieuwe systeem in met `chroot`:
+
+	#arch-chroot /mnt
+
+Schrijf de nieuwe hostnaam weg:
+
+	#echo parabola>/etc/hostname
+
+Zet de tijdzone op Amsterdam:
+
+	#ln -sf /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
+
+Uncommentarieer de locales die je nodig hebt in `/etc/locale.gen` en draai `locale-gen`.
+
+Zet de taal op Nederlands:
+
+	#echo LANG=nl_NL.UTF-8>/etc/locale.conf
+
+Wijzig `/etc/mkinitcpio.conf` zodat `encrypt` voor `filesystem` in de `HOOKS` regel komt.
