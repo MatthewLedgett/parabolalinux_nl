@@ -45,4 +45,22 @@ Ontsluit het LUKS volume als `cryptroot`:
 	#cryptsetup open /dev/sda3 cryptroot
 
 
-Nu is ze zichtbaar als `/dev/mapper/cryptroot`.
+Nu is ze zichtbaar als `/dev/mapper/cryptroot`. Formatteer haar met ext4:
+
+	#mkfs.ext4 /dev/mapper/cryptroot
+
+Koppel haar nu aan op `/mnt` voor de installatie:
+
+	#mount /dev/mapper/cryptroot /mnt
+
+Koppel daarbinnen `/dev/sda1` aan:
+
+	#mkdir /mnt/boot
+	#mount /dev/sda1 /mnt/boot
+
+Nu is het tijd om `pacstrap` te draaien om een basissysteem te installeren:
+
+	#pacstrap /mnt base grub vim
+
+
+
