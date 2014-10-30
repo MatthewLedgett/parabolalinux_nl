@@ -58,6 +58,8 @@ Koppel daarbinnen `/dev/sda1` aan:
 	#mkdir /mnt/boot
 	#mount /dev/sda1 /mnt/boot
 
+Neem in `/etc/pacman.d/mirrorlist` als bovenste entry `Server = http://10.0.20.181/parabola/parabola/$repo/os/$arch` op om de lokale mirror van Zeeburgerpad te gebruiken.
+
 Nu is het tijd om `pacstrap` te draaien om een basissysteem te installeren:
 
 	#pacstrap /mnt base grub vim
