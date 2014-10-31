@@ -99,6 +99,8 @@ Zet het rootwachtwoord op `root`:
 
 	#passwd
 
+Wijzig `/etc/crypttab` zodat er een regel voor de swap partitie `/dev/sda2` komt: `swap         /dev/sda2        /dev/urandom            swap,cipher=aes-cbc-essiv:sha256,size=256` in komt. Voorts moet in `/etc/fstab` de volgende regel worden toegevoegd `/dev/mapper/swap		none		swap		sw	0 0`.
+
 Wijzig `/etc/default/grub` zodat de regel met `GRUB_CMDLINE_LINUX` `cryptdevice=/dev/sda3:cryptroot` bevat.  
 
 Installeer GRUB in het MBR:
