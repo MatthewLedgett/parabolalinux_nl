@@ -19,15 +19,17 @@ uit om te zien hoe de harddisk wordt genoemd door het systeem; bijvoorbeeld `/de
 	#free -m 
 
 uit om te zien hoeveel megabyte RAM je hebt.
-Wij gaan er voor de handleiding vanuit dat de harddisk `/dev/sda` is. Je voert uit:
+Wij gaan er voor de handleiding vanuit dat de harddisk `/dev/sda` is. Je gaat het interactieve programma `fdisk` in met:
 
 	#fdisk /dev/sda
 
-Maak drie primaire partities:
+En maakt drie primaire partities:
 
 1. 2Gb partitie
 2. swap partitie net zo groot als het RAM; vergeet niet het type op 0x82 te zetten.
 3. partitie met de rest van de disk
+
+Nu verlaat je `fdisk` met `w`.
 
 Formatteer de eerste partitie met ext4; dit wordt de `/boot` partitie.
 
@@ -100,7 +102,7 @@ Zet het rootwachtwoord op `root`:
 
 Wijzig `/etc/crypttab` zodat er een regel voor de swap partitie `/dev/sda2` komt: `swap         /dev/sda2        /dev/urandom            swap,cipher=aes-cbc-essiv:sha256,size=256` in komt. Voorts moet in `/etc/fstab` de volgende regel worden toegevoegd `/dev/mapper/swap		none		swap		sw	0 0`.
 
-Wijzig `/etc/default/grub` zodat de regel met `GRUB_CMDLINE_LINUX` `cryptdevice=/dev/sda3:cryptroot` bevat.  
+Wijzig `/etc/default/grub` zodat de regel met `GRUB_CMDLINE_LINUX_DEFAULT` `cryptdevice=/dev/sda3:cryptroot` bevat.  
 
 Installeer GRUB in het MBR:
 
