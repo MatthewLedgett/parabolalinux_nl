@@ -81,7 +81,7 @@ Zet de tijdzone op Amsterdam:
 
 	#ln -sf /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
 
-Uncommentarieer de locales die je nodig hebt in `/etc/locale.gen` en draai `locale-gen`.
+Uncommentarieer de locales die je nodig hebt, bijvoorbeeld `nl_NL.UTF-8` en `en_US.UTF-8`, in `/etc/locale.gen` en draai `locale-gen`.
 
 Zet de taal op Nederlands:
 
